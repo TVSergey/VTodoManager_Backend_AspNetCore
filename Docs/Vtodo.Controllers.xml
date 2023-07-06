@@ -1,0 +1,389 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Vtodo.Controllers</name>
+    </assembly>
+    <members>
+        <member name="M:Vtodo.Controllers.AccountsController.Create(Vtodo.UseCases.Handlers.Accounts.Dto.CreateAccountDto)">
+            <summary>
+            Create an account
+            </summary>
+            <param name="createAccountDto">Create account Dto</param>
+            <response code="200">Returns access and refresh tokens</response>
+            <response code="400">Email is already taken</response>
+            <response code="400">Username is already taken</response>
+            <response code="400">Confirm password not equal password</response>
+        </member>
+        <member name="M:Vtodo.Controllers.AccountsController.RefreshTokens(Vtodo.UseCases.Handlers.Accounts.Dto.RefreshTokensDto)">
+            <summary>
+            Generate new access and refresh tokens
+            </summary>
+            <param name="refreshTokensDto">Refresh token Dto</param>
+            <response code="200">Returns access and refresh tokens</response>
+            <response code="400">Invalid refresh token</response>
+            <response code="403">Access denied</response>
+        </member>
+        <member name="M:Vtodo.Controllers.AccountsController.Login(Vtodo.UseCases.Handlers.Accounts.Dto.LoginByPasswordDto)">
+            <summary>
+            Login in account
+            </summary>
+            <param name="loginByPasswordDto">LoginByPassword Dto (Email + password)</param>
+            <response code="200">Returns access and refresh tokens</response>
+            <response code="403">Access denied</response>
+            <response code="404">Account not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.AccountsController.Logout(Vtodo.UseCases.Handlers.Accounts.Dto.LogoutDto)">
+            <summary>
+            Logout (Delete current refresh token)
+            </summary>
+            <param name="logoutDto">Logout Dto (refresh token)</param>
+            <response code="200">Deleted</response>
+            <response code="400">Invalid token</response>
+            <response code="401">User unauthorized</response>
+            <response code="403">Access denied</response>
+        </member>
+        <member name="M:Vtodo.Controllers.AccountsController.LogoutAll">
+            <summary>
+            Logout (Delete all current user refresh tokens)
+            </summary>
+            <response code="200">Deleted</response>
+            <response code="401">User unauthorized</response>
+            <response code="403">Access denied</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.Get(System.Int32)">
+            <summary>
+            Get board by id
+            </summary>
+            <param name="id">Board id</param>
+            <response code="200">Returns board dto</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.GetByTask(System.Int32)">
+            <summary>
+            Get all boards by project id
+            </summary>
+            <param name="id">project id</param>
+            <response code="200">Returns list board dto</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.Create(Vtodo.UseCases.Handlers.Boards.Dto.CreateBoardDto)">
+            <summary>
+            Create a board
+            </summary>
+            <param name="createBoardDto">Create board Dto</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.Update(System.Int32,Vtodo.UseCases.Handlers.Boards.Dto.UpdateBoardDto)">
+            <summary>
+            Update board
+            </summary>
+            <param name="id">Board id</param>
+            <param name="updateBoardDto">Update board Dto</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.MoveToProject(System.Int32,System.Int32)">
+            <summary>
+            Move board to another project
+            </summary>
+            <param name="boardId">Board id</param>
+            <param name="projectId">New project id</param>
+            <response code="200"></response>
+            <response code="400">New project id should not be equal to old project id</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+            <response code="404">Project not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.GetBoardHeaderBackground(System.Int32)">
+            <summary>
+            Get board header background image 
+            </summary>
+            <param name="id">Board id</param>
+            <response code="200"></response>
+            <response code="400">Background image file not exists</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+            <response code="500">File not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.UploadBoardHeaderBackground(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload board header background image 
+            </summary>
+            <param name="id">Board id</param>
+            <param name="uploadBoardHeaderBackground">Image, one of the types: ".jpg", ".png"</param>
+            <response code="200"></response>
+            <response code="400">Background image file not exists</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.DeleteBoardHeaderBackground(System.Int32)">
+            <summary>
+            Delete board header background image 
+            </summary>
+            <param name="id">Board id</param>
+            <response code="200"></response>
+            <response code="400">Background image file not exists</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.BoardsController.Delete(System.Int32)">
+            <summary>
+            Delete board
+            </summary>
+            <param name="id">Board id</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsController.Get(System.Int32)">
+            <summary>
+            Get project by id
+            </summary>
+            <param name="id">Project id</param>
+            <response code="200">Returns project dto</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsController.Create(Vtodo.UseCases.Handlers.Projects.Dto.CreateProjectDto)">
+            <summary>
+            Create a project
+            </summary>
+            <param name="createProjectDto">Create project dto</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsController.Update(System.Int32,Vtodo.UseCases.Handlers.Projects.Dto.UpdateProjectDto)">
+            <summary>
+            Update project
+            </summary>
+            <param name="id">Project id</param>
+            <param name="updateProjectDto">Update board Dto</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsController.Delete(System.Int32)">
+            <summary>
+            Delete project
+            </summary>
+            <param name="id">Project id</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsRolesController.Grant(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.GrantRoleDto)">
+            <summary>
+            Grant role (One of ProjectAdmin, ProjectUpdate)
+            </summary>
+            <param name="id">Project id</param>
+            <param name="role">Grant role Dto</param>
+            <response code="200"></response>
+            <response code="400">Account not a member in project</response>
+            <response code="400">Account already has this role</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+            <response code="404">Account not found</response>
+            <response code="500">Attempt change owner or add member</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsRolesController.Revoke(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.RevokeRoleDto)">
+            <summary>
+            Revoke role (One of ProjectAdmin, ProjectUpdate, ProjectMember)
+            </summary>
+            <param name="id">Project id</param>
+            <param name="role">Revoke role Dto</param>
+            <response code="200"></response>
+            <response code="400">Account is not a member in project</response>
+            <response code="400">Account already has this role</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+            <response code="404">Account with this role not found in project</response>
+            <response code="500">Attempt remove owner</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsRolesController.RevokeAll(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.KickMemberDto)">
+            <summary>
+            Revoke all roles (Kick member) 
+            </summary>
+            <param name="id">Project id</param>
+            <param name="role">Kick member Dto</param>
+            <response code="200"></response>
+            <response code="400">Account already has this role</response>
+            <response code="400">Account is not a member in project</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+            <response code="500">Attempt remove owner</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsRolesController.AddMember(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.AddMemberDto)">
+            <summary>
+            Grant member role to account
+            </summary>
+            <param name="id">Project id</param>
+            <param name="addMemberDto">Add member Dto</param>
+            <response code="200"></response>
+            <response code="400">Account already has this role</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+            <response code="404">Account not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.ProjectsRolesController.ChangeOwner(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.ChangeOwnerDto)">
+            <summary>
+            Change project owner
+            </summary>
+            <param name="id">Project id</param>
+            <param name="changeOwnerDto">Change owner Dto</param>
+            <response code="200"></response>
+            <response code="400">Account is not a member in project</response>
+            <response code="400">Account already has this role</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Project not found</response>
+            <response code="404">Account not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.Get(System.Int32)">
+            <summary>
+            Get task by id
+            </summary>
+            <param name="id">Task id</param>
+            <response code="200">Returns task dto</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.GetByTask(System.Int32)">
+            <summary>
+            Get list of tasks by board
+            </summary>
+            <param name="id">Board id</param>
+            <response code="200">Returns list of task dto</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+            <response code="404">Task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.Create(Vtodo.UseCases.Handlers.Tasks.Dto.CreateTaskDto)">
+            <summary>
+            Create a task
+            </summary>
+            <param name="createTaskDto">Task dto</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Board not found</response>
+            <response code="404">Task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.Update(System.Int32,Vtodo.UseCases.Handlers.Tasks.Dto.UpdateTaskDto)">
+            <summary>
+            Update task
+            </summary>
+            <param name="id">Task id</param>
+            <param name="updateTaskDto">Task dto</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.MoveToRoot(System.Int32)">
+            <summary>
+            Move task to root in board
+            </summary>
+            <param name="id">Task id</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.MoveToTask(System.Int32,System.Int32)">
+            <summary>
+            Move task to another task as children
+            </summary>
+            <param name="id">Task id</param>
+            <param name="parentId">Parent task id</param>
+            <response code="200"></response>
+            <response code="400">New parent task id should not be equal to task id (Attempt to use self as parent)</response>
+            <response code="400">New parent task id should not be equal to old parent task id (Attempt to change parent task to same parent)</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.MoveToBoard(System.Int32,System.Int32)">
+            <summary>
+            Move task to another board
+            </summary>
+            <param name="id">Task id</param>
+            <param name="boardId">Board id</param>
+            <response code="200"></response>
+            <response code="400">New board id should not be equal to old board id (Attempt to change board to same board)</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+            <response code="404">Board not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.GetTaskHeaderBackground(System.Int32)">
+            <summary>
+            Get task header background image
+            </summary>
+            <param name="id">Task id</param>
+            <response code="200"></response>
+            <response code="400">Background image file not exists</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+            <response code="500">File not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.UploadTaskHeaderBackground(System.Int32,Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload task header background image
+            </summary>
+            <param name="id">Task id</param>
+            <param name="uploadTaskHeaderBackground">Image, one of the types: ".jpg", ".png"</param>
+            <response code="200"></response>
+            <response code="400">Invalid file</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.DeleteTaskHeaderBackground(System.Int32)">
+            <summary>
+            Delete task header background image
+            </summary>
+            <param name="id">Task id</param>
+            <response code="200"></response>
+            <response code="400">Background image file not exists</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+            <response code="500">File not found</response>
+        </member>
+        <member name="M:Vtodo.Controllers.TasksController.Delete(System.Int32)">
+            <summary>
+            Delete task
+            </summary>
+            <param name="id">Task id</param>
+            <response code="200"></response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Task not found</response>
+        </member>
+    </members>
+</doc>

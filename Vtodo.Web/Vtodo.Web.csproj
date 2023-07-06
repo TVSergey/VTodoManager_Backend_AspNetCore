@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <Nullable>enable</Nullable>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Vtodo.Controllers\Vtodo.Controllers.csproj" />
+      <ProjectReference Include="..\Vtodo.DataAccess.Postgres.Migrations\Vtodo.DataAccess.Postgres.Migrations.csproj" />
+      <ProjectReference Include="..\Vtodo.DataAccess.Postgres\Vtodo.DataAccess.Postgres.csproj" />
+      <ProjectReference Include="..\Vtodo.DomainServices.Implementation\Vtodo.DomainServices.Implementation.csproj" />
+      <ProjectReference Include="..\Vtodo.DomainServices.Interfaces\Vtodo.DomainServices.Interfaces.csproj" />
+      <ProjectReference Include="..\Vtodo.Entities\Vtodo.Entities.csproj" />
+      <ProjectReference Include="..\Vtodo.Infrastructure.Implementation\Vtodo.Infrastructure.Implementation.csproj" />
+      <ProjectReference Include="..\Vtodo.Infrastructure.Interfaces\Vtodo.Infrastructure.Interfaces.csproj" />
+      <ProjectReference Include="..\Vtodo.UseCases\Vtodo.UseCases.csproj" />
+      <ProjectReference Include="..\Vtodo.Utils\Vtodo.Utils.csproj" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <PackageReference Include="AutoMapper" Version="12.0.1" />
+      <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.0" />
+      <PackageReference Include="FluentScheduler" Version="5.5.1" />
+      <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="6.0.15" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore" Version="7.0.3" />
+      <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="7.0.3">
+        <PrivateAssets>all</PrivateAssets>
+        <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      </PackageReference>
+      <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="7.0.3" />
+      <PackageReference Include="Swashbuckle.AspNetCore" Version="6.5.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.Swagger" Version="6.5.0" />
+      <PackageReference Include="Swashbuckle.AspNetCore.SwaggerUI" Version="6.5.0" />
+    </ItemGroup>
+
+</Project>

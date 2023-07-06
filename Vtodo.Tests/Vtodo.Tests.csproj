@@ -1,0 +1,37 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+    <PropertyGroup>
+        <TargetFramework>net6.0</TargetFramework>
+        <ImplicitUsings>enable</ImplicitUsings>
+        <Nullable>enable</Nullable>
+        <GenerateDocumentationFile>true</GenerateDocumentationFile>
+        <NoWarn>$(NoWarn);1591</NoWarn>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Debug' ">
+      <OutputPath>bin\debug\</OutputPath>
+    </PropertyGroup>
+
+    <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
+      <OutputPath>bin\release\</OutputPath>
+    </PropertyGroup>
+
+    <ItemGroup>
+      <PackageReference Include="Microsoft.EntityFrameworkCore.InMemory" Version="7.0.8" />
+      <PackageReference Include="Moq.EntityFrameworkCore" Version="7.0.0.2" />
+      <PackageReference Include="xunit" Version="2.4.2" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <ProjectReference Include="..\Vtodo.Controllers\Vtodo.Controllers.csproj" />
+      <ProjectReference Include="..\Vtodo.DataAccess.Postgres.Migrations\Vtodo.DataAccess.Postgres.Migrations.csproj" />
+      <ProjectReference Include="..\Vtodo.DataAccess.Postgres\Vtodo.DataAccess.Postgres.csproj" />
+      <ProjectReference Include="..\Vtodo.DomainServices.Implementation\Vtodo.DomainServices.Implementation.csproj" />
+      <ProjectReference Include="..\Vtodo.DomainServices.Interfaces\Vtodo.DomainServices.Interfaces.csproj" />
+      <ProjectReference Include="..\Vtodo.Infrastructure.Implementation\Vtodo.Infrastructure.Implementation.csproj" />
+      <ProjectReference Include="..\Vtodo.UseCases\Vtodo.UseCases.csproj" />
+      <ProjectReference Include="..\Vtodo.Utils\Vtodo.Utils.csproj" />
+      <ProjectReference Include="..\Vtodo.Web\Vtodo.Web.csproj" />
+    </ItemGroup>
+
+</Project>

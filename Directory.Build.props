@@ -1,0 +1,7 @@
+ <Project>
+    <PropertyGroup>
+        <OutputPath>$(SolutionDir)\Builds\$(Configuration)\$(MSBuildProjectName)</OutputPath>
+        <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
+        <DocumentationFile>$(SolutionDir)\Docs\$(MSBuildProjectName).xml</DocumentationFile>
+    </PropertyGroup>
+</Project>

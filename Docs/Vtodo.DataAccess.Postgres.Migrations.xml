@@ -1,0 +1,80 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Vtodo.DataAccess.Postgres.Migrations</name>
+    </assembly>
+    <members>
+        <member name="T:Vtodo.DataAccess.Postgres.Migrations.Migrations.Initial">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.Initial.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.Initial.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.Initial.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vtodo.DataAccess.Postgres.Migrations.Migrations.F">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.F.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.F.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.F.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vtodo.DataAccess.Postgres.Migrations.Migrations.SaltAccount">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.SaltAccount.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.SaltAccount.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.SaltAccount.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddeRefreshTokenTable">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddeRefreshTokenTable.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddeRefreshTokenTable.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddeRefreshTokenTable.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedProjectFiles">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedProjectFiles.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedProjectFiles.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedProjectFiles.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedTaskImageHeaderBackground">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedTaskImageHeaderBackground.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedTaskImageHeaderBackground.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Vtodo.DataAccess.Postgres.Migrations.Migrations.AddedTaskImageHeaderBackground.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
