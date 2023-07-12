@@ -9,7 +9,7 @@ namespace Vtodo.Infrastructure.Implementation.Services
     {
         public string GetBaseFolderPath()
         {
-            return Path.GetFullPath(Path.Join(Assembly.GetExecutingAssembly().Location, @"../../"));
+            return Path.GetFullPath(Path.Join(Assembly.GetExecutingAssembly().Location, @"../../VtodoData/"));
         }
 
         public FileStream? OpenFile(string path)

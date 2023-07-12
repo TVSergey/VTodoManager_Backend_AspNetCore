@@ -1,9 +1,12 @@
+using System.Linq;
 using FluentScheduler;
 using Vtodo.Infrastructure.Implementation.BackgroundJobs;
 using Microsoft.AspNetCore.Hosting;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Vtodo.DataAccess.Postgres;
 
 namespace Vtodo.Web
 {
@@ -20,7 +23,18 @@ namespace Vtodo.Web
                 var logger = host.Services.GetRequiredService<ILogger<Program>>();
                 logger.LogError(info.Exception, "Unhandled exception in job");
             };
+            
+            using (var scope = host.Services.CreateScope())
+            {
+                var services = scope.ServiceProvider;
 
+                var context = services.GetRequiredService<AppDbContext>();
+                if (context.Database.GetPendingMigrations().Any())
+                {
+                    context.Database.Migrate();
+                }
+            }
+            
             host.Run();
         }
 
