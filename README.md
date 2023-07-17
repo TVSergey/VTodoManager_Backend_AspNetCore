@@ -7,6 +7,7 @@ Backend проект таск-менеджера на ASP.NET Core 6.0.
 * Entity Framework Core
 * PostgreSQL 14
 * MediatR
+* Swashbuckle (Swagger)
 * AutoMapper
 * Docker
 
