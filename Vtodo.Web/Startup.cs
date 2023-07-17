@@ -148,6 +148,12 @@ namespace Vtodo.Web
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseSwagger();
+                app.UseSwaggerUI(config =>
+                {
+                    config.RoutePrefix = string.Empty;
+                    config.SwaggerEndpoint("swagger/v1/swagger.json", "VTodo private api");
+                });
             }
             app.UseMiddleware<ExceptionHandlerMiddleware>();
 
@@ -155,14 +161,7 @@ namespace Vtodo.Web
             
             app.UseAuthentication();
             app.UseAuthorization();
-            
-            app.UseSwagger();
-            app.UseSwaggerUI(config =>
-            {
-                config.RoutePrefix = string.Empty;
-                config.SwaggerEndpoint("swagger/v1/swagger.json", "VTodo private api");
-            });
-            
+
             app.UseHttpsRedirection();
             app.UseCors(x => x
                 .WithOrigins(Configuration.GetValue<string>("ClientAddress"))
