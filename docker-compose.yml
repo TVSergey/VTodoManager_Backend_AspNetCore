@@ -32,6 +32,7 @@ services:
     networks:
       - vtodo-dev
     volumes: 
-      - postgres-data:/var/lib/postgresql@14/data
+      - postgres-data:/var/lib/postgresql/data
 volumes:
   postgres-data:
+    name: postgres-data
