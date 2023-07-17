@@ -40,7 +40,7 @@ Backend проект таск-менеджера на ASP.NET Core 6.0.
         "password": "testpassw",
         "confirmPassword": "testpassw"
     }`
-и указать accessToken в меню Authorize. 
+и затем указать accessToken в меню Authorize. 
 
 По умолчанию accessToken действителен 5 минут. Это время можно изменить в файле конфигураций 
 Vtodo.Web/appsettings.json. 
