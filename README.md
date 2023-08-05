@@ -1,4 +1,4 @@
-# VTodo Backend
+# VTodoManager Backend
 ### О проекте
 Backend проект таск-менеджера на ASP.NET Core 6.0. 
 
