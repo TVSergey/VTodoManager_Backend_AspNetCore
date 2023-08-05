@@ -12,7 +12,6 @@ Backend проект таск-менеджера на ASP.NET Core 6.0.
 * Docker
 
 ### Архитектура проекта
-За основу взята архитектура https://github.com/denis-tsv/CleanArchitecture/tree/master/Maximum
 * Vtodo.Controllers - Слой, содержащий контроллеры проекта
 * Vtodo.DataAccess.Postgres - Слой, содержащий реализацию доступа к базе данных Postgres
 * Vtodo.DataAccess.Postgres.Migrations - Слой, содержащий миграции
@@ -28,6 +27,7 @@ Backend проект таск-менеджера на ASP.NET Core 6.0.
 * Vtodo.Web - Слой, содержащий веб-приложение
 
 ### Запуск проекта
+* Для запуска проекта требуется Docker Engine и Docker Compose  *
 * Склонировать репозиторий `git clone https://github.com/TVSergey/VTodo_Backend_AspNetCore.git`
 * Перейти в корневой каталог репозитория
 * Запустить проект, выполнив `docker-compose up --build`
@@ -46,10 +46,3 @@ Backend проект таск-менеджера на ASP.NET Core 6.0.
 Vtodo.Web/appsettings.json. 
 
 Также возможно получить новую пару accessToken\`a и refreshToken\`a используя POST `/api/v1/accounts/refresh_tokens`
-
-### ToDo
-* [ ] Добавить кеш (Redis)
-* [ ] Добавить SignalR
-* [ ] Добавить Email интеграцию
-* [ ] Добавить настройки аккаунта и проектов
-* [ ] Добавить логирование
