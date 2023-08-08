@@ -11,6 +11,7 @@ namespace Vtodo.UseCases.Handlers.Boards.Dto
         [Required]
         public int ProjectId { get; set; }
         
+        [Required]
         public int PrioritySort { get; set; }
     }
 }

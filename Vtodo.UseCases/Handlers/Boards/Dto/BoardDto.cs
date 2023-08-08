@@ -1,8 +1,4 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using Vtodo.Entities.Models;
-using Vtodo.UseCases.Handlers.Tasks.Dto;
+using System.ComponentModel.DataAnnotations;
 
 namespace Vtodo.UseCases.Handlers.Boards.Dto
 {
@@ -10,10 +6,13 @@ namespace Vtodo.UseCases.Handlers.Boards.Dto
     {
         public int Id { get; set; }
         
+        [Required]
         public string Title { get; set; } = string.Empty;
         
+        [Required]
         public int PrioritySort { get; set; }
         
+        [Required]
         public int ProjectId { get; set; }
 
         public string? ImageHeaderPath { get; set; }

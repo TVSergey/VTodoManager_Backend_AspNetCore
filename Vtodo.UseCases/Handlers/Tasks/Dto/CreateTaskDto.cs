@@ -10,8 +10,9 @@ namespace Vtodo.UseCases.Handlers.Tasks.Dto
         [StringLength(255, MinimumLength = 3)]
         public string Title { get; set; } = string.Empty;
         
+        [Required]
         public string Description { get; set; } = string.Empty;
-
+        
         [Required]
         public int BoardId { get; set; }
         
@@ -21,6 +22,7 @@ namespace Vtodo.UseCases.Handlers.Tasks.Dto
         [EnumDataType(typeof(TaskPriority))]
         public TaskPriority Priority { get; set; }
         
+        [Required]
         public int PrioritySort { get; set; }
     }
 }

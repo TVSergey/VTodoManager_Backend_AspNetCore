@@ -8,6 +8,7 @@ namespace Vtodo.UseCases.Handlers.Boards.Dto
         [StringLength(255, MinimumLength = 3)]
         public string Title { get; set; } = string.Empty;
 
+        [Required]
         public int PrioritySort { get; set; }
     }
 }
