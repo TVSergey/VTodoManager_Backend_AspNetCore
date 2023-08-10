@@ -1,7 +1,7 @@
-using System;
-using System.Net;
+using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
+using Newtonsoft.Json;
 using Vtodo.Entities.Exceptions;
 
 namespace Vtodo.Web.Utils
@@ -31,7 +31,8 @@ namespace Vtodo.Web.Utils
         {
             httpContext.Response.ContentType = "application/json";
             httpContext.Response.StatusCode = (int)customException.Code;
-            await httpContext.Response.WriteAsync(customException.Message);
+            
+            await httpContext.Response.WriteAsync(JsonConvert.SerializeObject(customException.Message), Encoding.UTF8);
         }
     }
 }
