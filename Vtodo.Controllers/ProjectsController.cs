@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;
@@ -6,6 +7,7 @@ using Vtodo.UseCases.Handlers.Projects.Commands.DeleteProject;
 using Vtodo.UseCases.Handlers.Projects.Commands.UpdateProject;
 using Vtodo.UseCases.Handlers.Projects.Dto;
 using Vtodo.UseCases.Handlers.Projects.Queries.GetProject;
+using Vtodo.UseCases.Handlers.Projects.Queries.GetUserProjectList;
 
 namespace Vtodo.Controllers
 {
@@ -32,6 +34,21 @@ namespace Vtodo.Controllers
         public async Task<ActionResult<ProjectDto>> Get(int id)
         {
            return await _mediator.Send(new GetProjectRequest() { Id = id});
+        }
+        
+        /// <summary>
+        /// Get projects list by account id
+        /// </summary>
+        /// <param name="id">User id</param>
+        /// <response code="200">Returns list of project dto</response>
+        /// <response code="401">Unauthorized</response>
+        /// <response code="403">Access denied</response>
+        /// <response code="404">Account not found</response>
+        /// <response code="404">Project not found</response>
+        [HttpGet("by_account/{id:int}")]
+        public async Task<ActionResult<List<ProjectDto>>> GetByAccount(int id)
+        {
+            return await _mediator.Send(new GetAccountProjectsListRequest() { UserId = id});
         }
         
         /// <summary>
