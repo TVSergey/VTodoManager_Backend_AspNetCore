@@ -20,7 +20,7 @@ services:
     volumes:
       - ./Builds/appdata/:/VtodoData/
   postgres_db:
-    container_name: postgres
+    container_name: vtodo_postgres
     image: postgres:14
     restart: on-failure
     environment:
@@ -32,7 +32,7 @@ services:
     networks:
       - vtodo-dev
     volumes: 
-      - postgres-data:/var/lib/postgresql/data
+      - vtodo_postgres-data:/var/lib/postgresql/data
 volumes:
-  postgres-data:
-    name: postgres-data
+  vtodo_postgres-data:
+    name: vtodo_postgres-data
