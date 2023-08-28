@@ -30,10 +30,10 @@ namespace Vtodo.Controllers
         /// <response code="400">Account not a member in project</response>
         /// <response code="400">Account already has this role</response>
         /// <response code="401">Unauthorized</response>
+        /// <response code="402">Attempt change owner or add member</response>
         /// <response code="403">Access denied</response>
         /// <response code="404">Project not found</response>
         /// <response code="404">Account not found</response>
-        /// <response code="500">Attempt change owner or add member</response>
         [HttpPost("grant/")]
         public async Task Grant(int id, [FromBody] GrantRoleDto role)
         {
@@ -49,10 +49,10 @@ namespace Vtodo.Controllers
         /// <response code="400">Account is not a member in project</response>
         /// <response code="400">Account already has this role</response>
         /// <response code="401">Unauthorized</response>
+        /// <response code="402">Attempt remove owner</response>
         /// <response code="403">Access denied</response>
         /// <response code="404">Project not found</response>
         /// <response code="404">Account with this role not found in project</response>
-        /// <response code="500">Attempt remove owner</response>
         [HttpDelete("revoke/")]
         public async Task Revoke(int id, [FromBody] RevokeRoleDto role)
         {
@@ -68,9 +68,9 @@ namespace Vtodo.Controllers
         /// <response code="400">Account already has this role</response>
         /// <response code="400">Account is not a member in project</response>
         /// <response code="401">Unauthorized</response>
+        /// <response code="402">Attempt remove owner</response>
         /// <response code="403">Access denied</response>
         /// <response code="404">Project not found</response>
-        /// <response code="500">Attempt remove owner</response>
         [HttpDelete("kick_member/")]
         public async Task RevokeAll(int id, [FromBody] KickMemberDto role)
         {

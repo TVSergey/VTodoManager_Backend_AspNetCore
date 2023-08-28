@@ -7,6 +7,7 @@ namespace Vtodo.UseCases.Handlers.Projects.Dto
 {
     public class ProjectDto
     {
+        [Required]
         public int Id { get; set; }
 
         [Required]
@@ -14,7 +15,5 @@ namespace Vtodo.UseCases.Handlers.Projects.Dto
         
         [Required]
         public long CreationDate { get; set; }
-
-        public ICollection<BoardDto> Boards { get; set; } = default!;
     }
 }

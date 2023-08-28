@@ -4,7 +4,7 @@ namespace Vtodo.Entities.Exceptions
 {
     public class AttemptToRemoveOwnerRoleException : CustomException
     {
-        public AttemptToRemoveOwnerRoleException(string message = "Attempt to revoke the Owner role") : base(HttpStatusCode.InternalServerError, message)
+        public AttemptToRemoveOwnerRoleException(string message = "Using a 'remove role' instead of a 'change owner' to remove owner") : base(HttpStatusCode.BadRequest, message)
         {
             
         }
