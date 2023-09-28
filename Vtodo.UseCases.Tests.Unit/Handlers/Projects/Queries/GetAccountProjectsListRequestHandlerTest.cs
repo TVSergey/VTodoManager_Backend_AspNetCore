@@ -1,7 +1,3 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading;
 using AutoMapper;
 using Moq;
 using Vtodo.DataAccess.Postgres;
@@ -11,7 +7,6 @@ using Vtodo.Entities.Models;
 using Vtodo.Infrastructure.Interfaces.Services;
 using Vtodo.Tests.Utils;
 using Vtodo.UseCases.Handlers.Projects.Dto;
-using Vtodo.UseCases.Handlers.Projects.Queries.GetProject;
 using Vtodo.UseCases.Handlers.Projects.Queries.GetUserProjectList;
 using Xunit;
 
@@ -26,7 +21,10 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Projects.Queries
         {
             SetupDbContext();
 
-            var request = new GetAccountProjectsListRequest() { UserId = 1 };
+            var currentAccountServiceMock = SetupCurrentAccountService();
+            currentAccountServiceMock.Setup(x => x.Account).Returns(_dbContext.Accounts.First(x => x.Id == 1));
+            
+            var request = new GetAccountProjectsListRequest() { };
 
             var project1 = _dbContext.Projects.First(x => x.Id == 1);
             var project2 = _dbContext.Projects.First(x => x.Id == 3);
@@ -34,30 +32,19 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Projects.Queries
             var mapperMock = SetupMapperMock();
             mapperMock.Setup(x => x.Map<List<ProjectDto>>(It.IsAny<List<Project>>())).Returns(new List<ProjectDto>()
             {
-                new ProjectDto() { Id = project1.Id, Title = project1.Title, CreationDate = new DateTimeOffset(project1.CreationDate).ToUnixTimeMilliseconds() },
-                new ProjectDto() { Id = project2.Id, Title = project2.Title, CreationDate = new DateTimeOffset(project2.CreationDate).ToUnixTimeMilliseconds() }
+                new ProjectDto() { Id = project1.Id, Title = project1.Title, 
+                    CreationDate = new DateTimeOffset(project1.CreationDate).ToUnixTimeMilliseconds() },
+                new ProjectDto() { Id = project2.Id, Title = project2.Title, 
+                    CreationDate = new DateTimeOffset(project2.CreationDate).ToUnixTimeMilliseconds() }
             });
 
-            var getAccountProjectsListRequestHandler = new GetAccountProjectsListRequestHandler(_dbContext, SetupProjectSecurityServiceMock().Object, mapperMock.Object);
+            var getAccountProjectsListRequestHandler = new GetAccountProjectsListRequestHandler(_dbContext, 
+                SetupProjectSecurityServiceMock().Object, currentAccountServiceMock.Object, mapperMock.Object);
 
             var result = getAccountProjectsListRequestHandler.Handle(request, CancellationToken.None).Result;
             
             Assert.NotNull(result);
             Assert.Equal(2, result.Count);
-
-            CleanUp();
-        }
-
-        [Fact]
-        public async void Handle_AccountNotFound_ThrowsAccountNotFoundException()
-        {
-            SetupDbContext();
-
-            var request = new GetAccountProjectsListRequest() { UserId = 30 };
-
-            var getAccountProjectsListRequestHandler = new GetAccountProjectsListRequestHandler(_dbContext, SetupProjectSecurityServiceMock().Object, SetupMapperMock().Object);
-
-            await Assert.ThrowsAsync<AccountNotFoundException>(() => getAccountProjectsListRequestHandler.Handle(request, CancellationToken.None));
 
             CleanUp();
         }
@@ -67,15 +54,25 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Projects.Queries
         {
             SetupDbContext();
 
-            var request = new GetAccountProjectsListRequest() {UserId = 3};
+            var currentAccountServiceMock = SetupCurrentAccountService();
+            currentAccountServiceMock.Setup(x => x.Account).Returns(_dbContext.Accounts.First(x => x.Id == 3));
+            
+            var request = new GetAccountProjectsListRequest() {};
 
-            var getAccountProjectsListRequestHandler = new GetAccountProjectsListRequestHandler(_dbContext, SetupProjectSecurityServiceMock().Object, SetupMapperMock().Object);
+            var getAccountProjectsListRequestHandler = new GetAccountProjectsListRequestHandler(_dbContext,
+                SetupProjectSecurityServiceMock().Object, 
+                currentAccountServiceMock.Object, SetupMapperMock().Object);
 
             await Assert.ThrowsAsync<ProjectNotFoundException>(() => getAccountProjectsListRequestHandler.Handle(request, CancellationToken.None));
 
             CleanUp();
         }
 
+        private static Mock<ICurrentAccountService> SetupCurrentAccountService()
+        {
+            return new Mock<ICurrentAccountService>();
+        }
+        
         private static Mock<IMapper> SetupMapperMock()
         {
             return new Mock<IMapper>();

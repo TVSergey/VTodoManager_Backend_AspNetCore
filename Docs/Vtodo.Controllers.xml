@@ -159,6 +159,17 @@
             <response code="403">Access denied</response>
             <response code="404">Project not found</response>
         </member>
+        <member name="M:Vtodo.Controllers.ProjectsController.GetByAccount">
+            <summary>
+            Get projects list by account id
+            </summary>
+            <param name="id">User id</param>
+            <response code="200">Returns list of project dto</response>
+            <response code="401">Unauthorized</response>
+            <response code="403">Access denied</response>
+            <response code="404">Account not found</response>
+            <response code="404">Project not found</response>
+        </member>
         <member name="M:Vtodo.Controllers.ProjectsController.Create(Vtodo.UseCases.Handlers.Projects.Dto.CreateProjectDto)">
             <summary>
             Create a project
@@ -199,10 +210,10 @@
             <response code="400">Account not a member in project</response>
             <response code="400">Account already has this role</response>
             <response code="401">Unauthorized</response>
+            <response code="402">Attempt change owner or add member</response>
             <response code="403">Access denied</response>
             <response code="404">Project not found</response>
             <response code="404">Account not found</response>
-            <response code="500">Attempt change owner or add member</response>
         </member>
         <member name="M:Vtodo.Controllers.ProjectsRolesController.Revoke(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.RevokeRoleDto)">
             <summary>
@@ -214,10 +225,10 @@
             <response code="400">Account is not a member in project</response>
             <response code="400">Account already has this role</response>
             <response code="401">Unauthorized</response>
+            <response code="402">Attempt remove owner</response>
             <response code="403">Access denied</response>
             <response code="404">Project not found</response>
             <response code="404">Account with this role not found in project</response>
-            <response code="500">Attempt remove owner</response>
         </member>
         <member name="M:Vtodo.Controllers.ProjectsRolesController.RevokeAll(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.KickMemberDto)">
             <summary>
@@ -229,9 +240,9 @@
             <response code="400">Account already has this role</response>
             <response code="400">Account is not a member in project</response>
             <response code="401">Unauthorized</response>
+            <response code="402">Attempt remove owner</response>
             <response code="403">Access denied</response>
             <response code="404">Project not found</response>
-            <response code="500">Attempt remove owner</response>
         </member>
         <member name="M:Vtodo.Controllers.ProjectsRolesController.AddMember(System.Int32,Vtodo.UseCases.Handlers.ProjectsRoles.Dto.AddMemberDto)">
             <summary>

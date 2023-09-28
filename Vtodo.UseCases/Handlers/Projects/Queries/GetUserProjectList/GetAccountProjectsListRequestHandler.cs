@@ -17,22 +17,24 @@ namespace Vtodo.UseCases.Handlers.Projects.Queries.GetUserProjectList
     {
         private readonly IDbContext _dbContext;
         private readonly IProjectSecurityService _projectSecurityService;
+        private readonly ICurrentAccountService _currentAccountService;
         private readonly IMapper _mapper;
         
         public GetAccountProjectsListRequestHandler(
             IDbContext dbContext, 
             IProjectSecurityService projectSecurityService,
+            ICurrentAccountService currentAccountService,
             IMapper mapper)
         {
             _dbContext = dbContext;
             _projectSecurityService = projectSecurityService;
+            _currentAccountService = currentAccountService;
             _mapper = mapper;
         }
         
         public async Task<List<ProjectDto>> Handle(GetAccountProjectsListRequest request, CancellationToken cancellationToken)
         {
-            var account = await _dbContext.Accounts.FirstOrDefaultAsync(x => x.Id == request.UserId, cancellationToken: cancellationToken);
-            if (account == null) throw new AccountNotFoundException();
+            var account = _currentAccountService.Account;
 
             var projects = await _dbContext.ProjectAccountsRoles
                 .AsNoTracking()

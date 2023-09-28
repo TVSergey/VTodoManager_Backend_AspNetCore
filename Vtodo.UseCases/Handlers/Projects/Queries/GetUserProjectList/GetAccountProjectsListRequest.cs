@@ -7,7 +7,6 @@ namespace Vtodo.UseCases.Handlers.Projects.Queries.GetUserProjectList
 {
     public class GetAccountProjectsListRequest : IRequest<List<ProjectDto>>
     {
-        [Required]
-        public int UserId { get; set; }
+        
     }
 }
