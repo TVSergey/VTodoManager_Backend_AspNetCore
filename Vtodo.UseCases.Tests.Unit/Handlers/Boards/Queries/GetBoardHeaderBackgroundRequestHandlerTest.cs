@@ -28,20 +28,7 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Boards.Queries
             await Assert.ThrowsAsync<BoardNotFoundException>(() => getBoardHeaderBackgroundRequestHandler.Handle(request, CancellationToken.None));
             CleanUp();
         } 
-        
-        [Fact]
-        public async void Handle_AttemptGetNullFile_AttemptGetNullFileException()
-        {
-            SetupDbContext();
 
-            var request = new GetBoardHeaderBackgroundRequest() {Id = 1};
-
-            var getBoardHeaderBackgroundRequestHandler = new GetBoardHeaderBackgroundRequestHandler(_dbContext, SetupProjectFilesServiceMock().Object);
-
-            await Assert.ThrowsAsync<AttemptGetNullFileException>(() => getBoardHeaderBackgroundRequestHandler.Handle(request, CancellationToken.None));
-            CleanUp();
-        } 
-        
         private Mock<IProjectsFilesService> SetupProjectFilesServiceMock()
         {
             var mock = new Mock<IProjectsFilesService>();

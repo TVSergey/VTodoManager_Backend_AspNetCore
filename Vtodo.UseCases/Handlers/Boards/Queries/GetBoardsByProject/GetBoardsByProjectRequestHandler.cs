@@ -41,8 +41,7 @@ namespace Vtodo.UseCases.Handlers.Boards.Queries.GetBoardsByProject
                 .AsNoTracking()
                 .Where(x => x.Project.Id == project.Id)
                 .ToListAsync(cancellationToken: cancellationToken);
-            if (boards?.Count == 0 || boards == null) throw new BoardNotFoundException();
-
+            
             _projectSecurityService.CheckAccess(project, ProjectRoles.ProjectMember);
             
             var result = _mapper.Map<List<BoardDto>>(boards);

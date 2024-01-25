@@ -81,20 +81,6 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Tasks.Queries
             CleanUp();
         }
         
-        [Fact]
-        public async void Handle_TaskNotFound_ThrowsTaskNotFoundException()
-        {
-            SetupDbContext();
-
-            var request = new GetTasksByBoardRequest() { BoardId = 2};
-
-            var getTasksByBoardRequestHandler = new GetTasksByBoardRequestHandler(_dbContext, SetupProjectSecurityServiceMock().Object, SetupMapperMock().Object);
-
-            await Assert.ThrowsAsync<TaskNotFoundException>(() => getTasksByBoardRequestHandler.Handle(request, CancellationToken.None));
-            
-            CleanUp();
-        }
-        
         private static Mock<IProjectSecurityService> SetupProjectSecurityServiceMock()
         {
             var mock = new Mock<IProjectSecurityService>();

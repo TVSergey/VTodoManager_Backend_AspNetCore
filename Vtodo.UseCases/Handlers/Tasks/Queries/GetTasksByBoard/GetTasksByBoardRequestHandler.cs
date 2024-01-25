@@ -44,8 +44,6 @@ namespace Vtodo.UseCases.Handlers.Tasks.Queries.GetTasksByBoard
                 .AsNoTracking()
                 .Where(x => x.Board.Id == board.Id)
                 .ToListAsync(cancellationToken: cancellationToken);
-            
-            if (tasks?.Count == 0 || tasks == null) throw new TaskNotFoundException();
 
             _projectSecurityService.CheckAccess(board.Project, ProjectRoles.ProjectMember);
             

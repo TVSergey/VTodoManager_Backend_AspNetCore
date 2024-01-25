@@ -161,9 +161,8 @@
         </member>
         <member name="M:Vtodo.Controllers.ProjectsController.GetByAccount">
             <summary>
-            Get projects list by account id
+            Get projects list by account
             </summary>
-            <param name="id">User id</param>
             <response code="200">Returns list of project dto</response>
             <response code="401">Unauthorized</response>
             <response code="403">Access denied</response>

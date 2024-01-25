@@ -113,11 +113,10 @@ namespace Vtodo.Controllers
         /// <response code="404">Board not found</response>
         /// <response code="500">File not found</response>
         [HttpGet("{id:int}/header_background")]
-        public async Task<ActionResult<FileStream>> GetBoardHeaderBackground(int id)
+        public async Task<ActionResult<FileStream?>> GetBoardHeaderBackground(int id)
         {
             var file = await _mediator.Send(new GetBoardHeaderBackgroundRequest() {Id = id});
-            
-            return File(file, "application/octet-stream", Path.GetFileName(file.Name));
+            return file == null ? Ok() : File(file, "application/octet-stream", Path.GetFileName(file.Name));
         }
         
         /// <summary>

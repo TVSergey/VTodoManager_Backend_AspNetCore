@@ -49,25 +49,6 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Projects.Queries
             CleanUp();
         }
         
-        [Fact]
-        public async void Handle_ProjectNotFound_ThrowsProjectNotFoundException()
-        {
-            SetupDbContext();
-
-            var currentAccountServiceMock = SetupCurrentAccountService();
-            currentAccountServiceMock.Setup(x => x.Account).Returns(_dbContext.Accounts.First(x => x.Id == 3));
-            
-            var request = new GetAccountProjectsListRequest() {};
-
-            var getAccountProjectsListRequestHandler = new GetAccountProjectsListRequestHandler(_dbContext,
-                SetupProjectSecurityServiceMock().Object, 
-                currentAccountServiceMock.Object, SetupMapperMock().Object);
-
-            await Assert.ThrowsAsync<ProjectNotFoundException>(() => getAccountProjectsListRequestHandler.Handle(request, CancellationToken.None));
-
-            CleanUp();
-        }
-
         private static Mock<ICurrentAccountService> SetupCurrentAccountService()
         {
             return new Mock<ICurrentAccountService>();

@@ -36,7 +36,7 @@ namespace Vtodo.UseCases.Handlers.Tasks.Commands.DeleteTaskHeaderBackground
 
             _projectSecurityService.CheckAccess(task.Board.Project, ProjectRoles.ProjectUpdate);
 
-            if (string.IsNullOrWhiteSpace(task.ImageHeaderPath)) throw new AttemptGetNullFileException();
+            if (string.IsNullOrWhiteSpace(task.ImageHeaderPath)) return;
             _projectFilesService.DeleteProjectFile(task.Board.Project, task, task.ImageHeaderPath);
 
             task.ImageHeaderPath = null;

@@ -64,20 +64,6 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Boards.Queries
             
             CleanUp();
         }
-        
-        [Fact]
-        public async void Handle_BoardNotFound_ThrowsBoardNotFoundException()
-        {
-            SetupDbContext();
-
-            var request = new GetBoardsByProjectRequest() { ProjectId = 2};
-
-            var getBoardsByProjectRequestHandler = new GetBoardsByProjectRequestHandler(_dbContext, SetupProjectSecurityServiceMock().Object, SetupMapperMock().Object);
-
-            await Assert.ThrowsAsync<BoardNotFoundException>(() => getBoardsByProjectRequestHandler.Handle(request, CancellationToken.None));
-            
-            CleanUp();
-        }
 
         private static Mock<IMapper> SetupMapperMock()
         {

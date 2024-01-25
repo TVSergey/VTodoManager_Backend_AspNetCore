@@ -29,19 +29,6 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Tasks.Queries
             CleanUp();
         } 
         
-        [Fact]
-        public async void Handle_AttemptGetNullFile_AttemptGetNullFileException()
-        {
-            SetupDbContext();
-
-            var request = new GetTaskHeaderBackgroundRequest() {Id = 1};
-
-            var getTaskHeaderBackgroundRequestHandler = new GetTaskHeaderBackgroundRequestHandler(_dbContext, SetupProjectFilesServiceMock().Object);
-
-            await Assert.ThrowsAsync<AttemptGetNullFileException>(() => getTaskHeaderBackgroundRequestHandler.Handle(request, CancellationToken.None));
-            CleanUp();
-        } 
-        
         private Mock<IProjectsFilesService> SetupProjectFilesServiceMock()
         {
             var mock = new Mock<IProjectsFilesService>();

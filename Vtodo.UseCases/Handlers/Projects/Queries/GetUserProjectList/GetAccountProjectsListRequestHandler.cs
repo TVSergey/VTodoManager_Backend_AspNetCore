@@ -42,8 +42,6 @@ namespace Vtodo.UseCases.Handlers.Projects.Queries.GetUserProjectList
                 .Select(x => x.Project)
                 .ToListAsync(cancellationToken);
 
-            if (projects?.Count == 0 || projects == null) throw new ProjectNotFoundException();
-
             var result = _mapper.Map<List<ProjectDto>>(projects);
 
             for (var i = 0; i < result.Count; i++)

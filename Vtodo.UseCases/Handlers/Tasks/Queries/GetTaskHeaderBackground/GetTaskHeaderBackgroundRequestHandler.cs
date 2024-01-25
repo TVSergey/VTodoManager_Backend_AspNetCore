@@ -9,7 +9,7 @@ using Vtodo.Infrastructure.Interfaces.Services;
 
 namespace Vtodo.UseCases.Handlers.Tasks.Queries.GetTaskHeaderBackground
 {
-    internal class GetTaskHeaderBackgroundRequestHandler : IRequestHandler<GetTaskHeaderBackgroundRequest, FileStream>
+    internal class GetTaskHeaderBackgroundRequestHandler : IRequestHandler<GetTaskHeaderBackgroundRequest, FileStream?>
     {
         private readonly IDbContext _dbContext;
         private readonly IProjectsFilesService _projectFilesService;
@@ -22,7 +22,7 @@ namespace Vtodo.UseCases.Handlers.Tasks.Queries.GetTaskHeaderBackground
             _projectFilesService = projectFilesService;
         }
         
-        public async Task<FileStream> Handle(GetTaskHeaderBackgroundRequest request, CancellationToken cancellationToken)
+        public async Task<FileStream?> Handle(GetTaskHeaderBackgroundRequest request, CancellationToken cancellationToken)
         {
             var task = await _dbContext.Tasks
                 .Include(x => x.Board)
@@ -33,7 +33,7 @@ namespace Vtodo.UseCases.Handlers.Tasks.Queries.GetTaskHeaderBackground
 
             if (task == null) throw new TaskNotFoundException();
 
-            if (task.ImageHeaderPath == null) throw new AttemptGetNullFileException();
+            if (task.ImageHeaderPath == null) return null;
 
             var result = _projectFilesService.GetProjectFile(task.Board.Project, task, task.ImageHeaderPath);
 

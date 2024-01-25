@@ -73,29 +73,6 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Boards.Commands
             CleanUp();
         }
         
-        [Fact]
-        public async void Handle_AttemptGetNullFile_ThrowsAttemptGetNullFileException()
-        {
-            SetupDbContext();
-            _dbContext.Boards.First().ImageHeaderPath = null;
-            _dbContext.SaveChanges();
-            
-            var request = new DeleteBoardHeaderBackgroundRequest() { Id = 1};
-            
-            var mockProjectFileService = SetupProjectFilesServiceMock();
-            mockProjectFileService.Setup(x =>
-                x.DeleteProjectFile(It.IsAny<Project>(), It.IsAny<Board>(), It.IsAny<string>())).Verifiable();
-            
-            var deleteBoardHeaderBackgroundRequestHandler = new DeleteBoardHeaderBackgroundRequestHandler(
-                _dbContext, 
-                SetupProjectSecurityServiceMock().Object, 
-                mockProjectFileService.Object);
-            
-            await Assert.ThrowsAsync<AttemptGetNullFileException>(() => deleteBoardHeaderBackgroundRequestHandler.Handle(request, CancellationToken.None));
-            
-            CleanUp();
-        }
-        
         private static Mock<IProjectSecurityService> SetupProjectSecurityServiceMock()
         {
             var mock = new Mock<IProjectSecurityService>();

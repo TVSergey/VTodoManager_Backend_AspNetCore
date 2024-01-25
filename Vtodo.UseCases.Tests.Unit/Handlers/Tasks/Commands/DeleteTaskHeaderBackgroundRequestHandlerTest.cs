@@ -72,30 +72,6 @@ namespace Vtodo.UseCases.Tests.Unit.Handlers.Tasks.Commands
             
             CleanUp();
         }
-
-        [Fact]
-        public async void Handle_AttemptGetNullFile_ThrowsAttemptGetNullFileException()
-        {
-            SetupDbContext();    
-            
-            _dbContext.Tasks.First().ImageHeaderPath = null;
-            _dbContext.SaveChanges();
-            
-            var request = new DeleteTaskHeaderBackgroundRequest() { Id = 1};                                                                        
-                                                                                                                                        
-            var mockProjectFileService = SetupProjectFilesServiceMock();                                                                            
-            mockProjectFileService.Setup(x =>                                                                                                       
-                x.DeleteProjectFile(It.IsAny<Project>(), It.IsAny<TaskM>(), It.IsAny<string>())).Verifiable();                                      
-                                                                                                                                        
-            var deleteTaskHeaderBackgroundRequestHandler = new DeleteTaskHeaderBackgroundRequestHandler(                                            
-                _dbContext,                                                                                                                         
-                SetupProjectSecurityServiceMock().Object,                                                                                           
-                SetupProjectFilesServiceMock().Object);                                                                                             
-                                                                                                                                        
-            await Assert.ThrowsAsync<AttemptGetNullFileException>(() => deleteTaskHeaderBackgroundRequestHandler.Handle(request, CancellationToken.None));
-            
-            CleanUp();   
-        }
         
         private static Mock<IProjectSecurityService> SetupProjectSecurityServiceMock()
         {

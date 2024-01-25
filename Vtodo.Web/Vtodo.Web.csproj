@@ -19,7 +19,6 @@
       <ProjectReference Include="..\Vtodo.Infrastructure.Implementation\Vtodo.Infrastructure.Implementation.csproj" />
       <ProjectReference Include="..\Vtodo.Infrastructure.Interfaces\Vtodo.Infrastructure.Interfaces.csproj" />
       <ProjectReference Include="..\Vtodo.UseCases\Vtodo.UseCases.csproj" />
-      <ProjectReference Include="..\Vtodo.Utils\Vtodo.Utils.csproj" />
     </ItemGroup>
 
     <ItemGroup>

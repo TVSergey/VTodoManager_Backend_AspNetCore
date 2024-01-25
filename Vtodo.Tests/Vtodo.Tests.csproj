@@ -30,7 +30,6 @@
       <ProjectReference Include="..\Vtodo.DomainServices.Interfaces\Vtodo.DomainServices.Interfaces.csproj" />
       <ProjectReference Include="..\Vtodo.Infrastructure.Implementation\Vtodo.Infrastructure.Implementation.csproj" />
       <ProjectReference Include="..\Vtodo.UseCases\Vtodo.UseCases.csproj" />
-      <ProjectReference Include="..\Vtodo.Utils\Vtodo.Utils.csproj" />
       <ProjectReference Include="..\Vtodo.Web\Vtodo.Web.csproj" />
     </ItemGroup>
 
