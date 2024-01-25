@@ -159,15 +159,16 @@ namespace Vtodo.Web
 
             app.UseRouting();
             
-            app.UseAuthentication();
-            app.UseAuthorization();
-
-            app.UseHttpsRedirection();
             app.UseCors(x => x
                 .WithOrigins(Configuration.GetValue<string>("ClientAddress"))
                 .AllowCredentials()
                 .AllowAnyMethod()
                 .AllowAnyHeader());
+            
+            app.UseAuthentication();
+            app.UseAuthorization();
+
+            app.UseHttpsRedirection();
             
             app.UseCookiePolicy(new CookiePolicyOptions
             {
